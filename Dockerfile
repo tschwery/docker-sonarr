@@ -6,7 +6,8 @@ RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositorie
         libmediainfo \
         ca-certificates \
         mono \
-        curl
+        curl \
+        dumb-init
 
 ENV SONARR_VERSION 2.0.0.4949
 
@@ -30,7 +31,4 @@ RUN addgroup -g ${USERID} -S ${USERNAME} \
 
 USER sonarr
 
-ADD start.sh /
-
-ENTRYPOINT ["/start.sh"]
-CMD ["mono", "/NzbDrone/NzbDrone.exe", "--no-browser", "-data=/config"]
+CMD ["dumb-init", "mono", "/NzbDrone/NzbDrone.exe", "--no-browser", "-data=/config"]

@@ -14,7 +14,7 @@ RUN \
   && chmod +x /usr/bin/dumb-init
 
 ENV YDG_CONFIG_HOME=/config
-ENV SONARR_VERSION 2.0.0.5054
+ENV SONARR_VERSION 2.0.0.5085
 
 RUN \
   curl -SL http://download.sonarr.tv/v2/master/mono/NzbDrone.master.${SONARR_VERSION}.mono.tar.gz -o /tmp/NzbDrone.tgz \

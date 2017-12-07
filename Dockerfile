@@ -5,7 +5,7 @@ RUN \
   yum install -y epel-release yum-utils \
   && rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF" \
   && yum-config-manager --add-repo http://download.mono-project.com/repo/centos/ \
-  && yum install -y wget mediainfo libzen libmediainfo curl gettext mono-core mono-devel sqlite.x86_64 \
+  && yum install -y libmediainfo curl gettext mono-core mono-devel sqlite.x86_64 \
   && yum clean all \
   && rm -rf /var/cache/yum || true
 
@@ -24,11 +24,5 @@ RUN \
 EXPOSE 8989 9898
 
 VOLUME ["/config", "/data"]
-
-ENV USERID 1000
-ENV USERNAME sonarr
-
-RUN useradd ${USERNAME} -u ${USERID}
-USER sonarr
 
 CMD ["/usr/bin/dumb-init", "/usr/bin/mono", "/NzbDrone/NzbDrone.exe", "--no-browser", "-data=/config"]

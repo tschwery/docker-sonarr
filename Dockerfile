@@ -21,6 +21,9 @@ RUN \
   && tar xzvf /tmp/NzbDrone.tgz \
   && rm /tmp/NzbDrone.tgz
 
+RUN \
+  ln -s /usr/lib64/libmediainfo.so.17 /usr/lib64/libmediainfo.so.0
+
 EXPOSE 8989 9898
 
 VOLUME ["/config", "/data"]

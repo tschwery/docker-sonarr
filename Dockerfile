@@ -13,16 +13,13 @@ RUN \
   curl -SL https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 -o /usr/bin/dumb-init \
   && chmod +x /usr/bin/dumb-init
 
-ENV YDG_CONFIG_HOME=/config
-ENV SONARR_VERSION 2.0.0.5085
+ENV XDG_CONFIG_HOME=/config
+ENV SONARR_VERSION 2.0.0.5163
 
 RUN \
   curl -SL http://download.sonarr.tv/v2/master/mono/NzbDrone.master.${SONARR_VERSION}.mono.tar.gz -o /tmp/NzbDrone.tgz \
   && tar xzvf /tmp/NzbDrone.tgz \
   && rm /tmp/NzbDrone.tgz
-
-RUN \
-  ln -s /usr/lib64/libmediainfo.so.17 /usr/lib64/libmediainfo.so.0
 
 EXPOSE 8989 9898
 
